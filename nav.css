@@ -1,0 +1,52 @@
+/* General Navbar Styling */
+.navbar {
+    background: linear-gradient(to right, #0099cc 0%, #00cc99 100%);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border-bottom: 2px solid #146a8c; /* Slight border for contrast */
+}
+
+.navbar .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5); /* Toggler border matches gradient */
+    background-color: #ffffff; /* Toggler button color */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Navbar Links */
+.navbar-nav .nav-item .nav-link {
+    color: #ffffff; /* Text color */
+    font-size: 16px; /* Slightly larger font */
+    font-weight: 500; /* Medium weight for readability */
+    text-transform: uppercase; /* Uppercase for clean navigation look */
+    padding: 10px 15px; /* Improved padding for clickable area */
+    transition: color 0.3s ease, background 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover Effect for Links */
+.navbar-nav .nav-item .nav-link:hover {
+    color: #146a8c; /* Complementary color */
+    background: #81aedb; 
+    border-radius: 5px; /* Rounded corners for hover */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* Subtle shadow on hover */
+}
+
+/* Active Link Styling */
+.navbar-nav .nav-item .nav-link.active {
+    background: #4b87ff; /* Active item background */
+    color: #0d78c9; /* Match the gradient color */
+    border-radius: 5px; /* Rounded corners */
+    font-weight: bold; /* Highlight active item */
+}
+
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px; /* Reduced padding on smaller screens */
+    }
+
+    .navbar-nav .nav-item .nav-link {
+        font-size: 14px; /* Smaller font size for compact view */
+    }
+}
