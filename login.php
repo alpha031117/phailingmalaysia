@@ -12,9 +12,9 @@ function hashPassword($password, $salt) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $user_name = filter_input(INPUT_POST, 'user_name', FILTER_SANITIZE_STRING);
-    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
-    
+    $user_name = filter_input(INPUT_POST, 'user_name', FILTER_SANITIZE_SPECIAL_CHARS);
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
+
     // Get the JAWSDB_URL from Heroku environment variable
     $db_url = parse_url(getenv('JAWSDB_URL'));
 
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dbname = ltrim($db_url['path'], '/'); // Database name (remove the leading "/")
 
     // Create connection
-    $conn = new mysqli($servername, $username, $dbpassword, $dbname);
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
         // Check connection
         if ($conn->connect_error) {
