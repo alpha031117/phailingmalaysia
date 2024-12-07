@@ -1,8 +1,8 @@
 {
-    "name": "phailingMalaysia",
+    "name": "phailingmalaysia/phailingmalaysia",
     "description": "A simple PHP app",
     "require": {
-      "php": "7.4.*"
+        "php": "8.3.*"
     }
-  }
+}
   
