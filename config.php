@@ -1,15 +1,34 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "pHailing";  
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "pHailing";  
+
+// // Create connection
+// $conn = new mysqli($servername, $username, $password);
+
+// // Check connection
+// if ($conn->connect_error) {
+//     die("Connection failed: " . $conn->connect_error);
+// }
+
+// Get the JAWSDB_URL from Heroku environment variable
+$db_url = parse_url(getenv('JAWSDB_URL'));
+
+// Extract the database connection details
+$servername = $db_url['host']; // Database host
+$username = $db_url['user'];   // Database username
+$password = $db_url['pass'];   // Database password
+$dbname = ltrim($db_url['path'], '/'); // Database name (remove the leading "/")
 
 // Create connection
-$conn = new mysqli($servername, $username, $password);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
+} else {
+    echo "Connected successfully";
 }
 
 // Create database if it doesn't exist
