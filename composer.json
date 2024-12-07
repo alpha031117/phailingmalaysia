@@ -1,0 +1,8 @@
+{
+    "name": "phailingMalaysia",
+    "description": "A simple PHP app",
+    "require": {
+      "php": "7.4.*"
+    }
+  }
+  
