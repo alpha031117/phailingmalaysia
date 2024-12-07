@@ -23,11 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Hash the password with the salt
     $passwordHash = hashPassword($password, $salt);
 
-    // Include database configuration
-    $servername = "localhost";
-    $username = "root";
-    $dbpassword = "";
-    $dbname = "pHailing";
+    // Get the JAWSDB_URL from Heroku environment variable
+    $db_url = parse_url(getenv('JAWSDB_URL'));
+
+    // Extract the database connection details
+    $servername = $db_url['host']; // Database host
+    $username = $db_url['user'];   // Database username
+    $password = $db_url['pass'];   // Database password
+    $dbname = ltrim($db_url['path'], '/'); // Database name (remove the leading "/")
 
     // Create connection
     $conn = new mysqli($servername, $username, $dbpassword, $dbname);

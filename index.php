@@ -119,7 +119,7 @@
     </head>
 <body>    
   <!-- Left section with background -->
-<div class="left-section"><img src="assets/background.png" width="700" height="500"/></div>
+<div class="left-section"><img src="/background.png" width="700" height="500"/></div>
 
 <!-- Right section with login form -->
 <div class="right-section">

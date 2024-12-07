@@ -14,14 +14,18 @@ function hashPassword($password, $salt) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_name = filter_input(INPUT_POST, 'user_name', FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
-        // Include database configuration
-        $servername = "localhost";
-        $username = "root";
-        $dbpassword = "";
-        $dbname = "pHailing";
+    
+    // Get the JAWSDB_URL from Heroku environment variable
+    $db_url = parse_url(getenv('JAWSDB_URL'));
 
-        // Create connection
-        $conn = new mysqli($servername, $username, $dbpassword, $dbname);
+    // Extract the database connection details
+    $servername = $db_url['host']; // Database host
+    $username = $db_url['user'];   // Database username
+    $password = $db_url['pass'];   // Database password
+    $dbname = ltrim($db_url['path'], '/'); // Database name (remove the leading "/")
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $dbpassword, $dbname);
 
         // Check connection
         if ($conn->connect_error) {
@@ -64,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Login Page</title>
-    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
     <link href="https://fonts.googleapis.com/css?family=Courgette|Open+Sans&display=swap" rel="stylesheet"> 
@@ -181,7 +185,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 <!-- Left section with background -->
-<div class="left-section"><img src="assets/background.png" width="700" height="500"/></div>
+<div class="left-section"><img src="/background.png" width="700" height="500"/></div>
 
 <!-- Right section with login form -->
 <div class="right-section">
